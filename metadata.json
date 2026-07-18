@@ -1,0 +1,6 @@
+{
+  "name": "securify",
+  "description": "A full-screen data security SaaS landing page with looping background video, floating navbar, and staggered display typography.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
