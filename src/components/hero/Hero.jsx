@@ -16,42 +16,11 @@ export default function Hero({
   return (
     <section
       id="hero-section"
-      className="relative min-h-screen w-full overflow-hidden bg-black flex flex-col justify-center items-center px-6"
+      className="relative min-h-screen md:h-screen w-full overflow-hidden bg-black select-none flex flex-col justify-between md:block"
     >
-      <svg className="absolute w-0 h-0 pointer-events-none">
-        <defs>
-          <filter id="clean-rust">
-            <feTurbulence
-              type="fractalNoise"
-              baseFrequency="0.05"
-              numOctaves="4"
-              result="noise"
-            />
-            <feColorMatrix
-              type="matrix"
-              values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 8 -2"
-              result="mask"
-            />
-            <feComposite
-              operator="in"
-              in="SourceGraphic"
-              in2="mask"
-              result="weathered"
-            />
-            <feDisplacementMap
-              in="weathered"
-              in2="noise"
-              scale="6"
-              xChannelSelector="R"
-              yChannelSelector="G"
-            />
-          </filter>
-        </defs>
-      </svg>
-
       <video
         id="bg-video"
-        className="absolute inset-0 w-full h-full object-cover opacity-25 z-0 pointer-events-none filter grayscale contrast-115 brightness-50"
+        className="absolute inset-0 w-full h-full object-cover opacity-35 z-0 pointer-events-none filter grayscale contrast-125 brightness-100"
         autoPlay
         loop
         muted
@@ -59,111 +28,153 @@ export default function Hero({
         src="/hero/hero.mp4"
       />
 
-      <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-transparent to-black z-10 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black via-black/40 to-black z-10 pointer-events-none" />
+      <div className="absolute inset-0 bg-black/60 z-10 pointer-events-none mix-blend-multiply" />
 
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] sm:w-[600px] h-[350px] sm:h-[600px] bg-yellow-500/[0.03] blur-[130px] rounded-full pointer-events-none z-0" />
+      {/* Ambient Glows */}
+      <div className="absolute top-[20%] md:top-[30%] left-[10%] md:left-[20%] w-[250px] md:w-[500px] h-[250px] md:h-[500px] bg-[#d4af37]/5 blur-[80px] md:blur-[160px] rounded-full pointer-events-none z-0" />
+      <div className="absolute bottom-[20%] right-[5%] md:right-[10%] w-[200px] md:w-[400px] h-[200px] md:h-[400px] bg-red-950/20 blur-[70px] md:blur-[140px] rounded-full pointer-events-none z-0" />
 
-      <div className="absolute inset-0 z-12 pointer-events-none opacity-70">
+      <div className="absolute inset-0 z-12 pointer-events-none opacity-40">
         <Particles
-          particleColors={["#facc15", "#ffffff"]}
+          particleColors={["#d4af37", "#ffffff"]}
           particleCount={30}
-          particleSpread={20}
-          speed={0.05}
-          particleBaseSize={25}
-          moveParticlesOnHover={false}
+          particleSpread={8}
+          speed={0.2}
+          particleBaseSize={60}
+          moveParticlesOnHover
           alphaParticles={true}
-          disableRotation={true}
+          disableRotation={false}
           pixelRatio={1}
         />
       </div>
 
+      {/* Main Content Container */}
       <div
         id="content-container"
-        className="relative w-full max-w-4xl mx-auto z-20 flex flex-col items-center text-center mt-auto mb-auto"
+        className="relative h-full w-full max-w-7xl mx-auto z-20 px-6 md:px-12 flex flex-col pt-28 pb-12 md:block md:pt-0 md:pb-0 flex-grow"
       >
-        
-
-          <motion.h1
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            style={{
-              filter: "url(#clean-rust)",
-              backgroundImage:
-                "url('data:image/svg+xml,%3Csvg viewBox=%220 0 100 100%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22n%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.95%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23n)%22 opacity=%220.4%22/%3E%3C/svg%3E')",
-            }}
-            className="text-white bg-clip-text bg-gradient-to-b from-zinc-100 via-zinc-300 to-zinc-500 font-[950] tracking-tight text-[clamp(2.2rem,6vw,4.2rem)] uppercase leading-tight bg-blend-color-burn relative z-10 pr-6 sm:pr-8"
-          >
-            ANG PAMBANSANG
-          </motion.h1>
-
-          <motion.h2
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            style={{
-              filter: "url(#clean-rust)",
-              backgroundImage:
-                "url('data:image/svg+xml,%3Csvg viewBox=%220 0 100 100%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22n%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.8%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23n)%22 opacity=%220.5%22/%3E%3C/svg%3E')",
-            }}
-            className="text-yellow-500 bg-clip-text bg-gradient-to-b from-yellow-400 via-amber-500 to-amber-700 font-[950] tracking-tight text-[clamp(2.5rem,7vw,4.8rem)] uppercase leading-none mt-1 bg-blend-color-burn relative z-10"
-          >
-            GYM BAKAL
-          </motion.h2>
-        
-
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.5 }}
-          className="text-neutral-400 text-sm sm:text-base md:text-lg font-medium tracking-wide max-w-xl mb-10 opacity-90"
+        {/* BUILD */}
+        <motion.h1
+          id="title-build"
+          initial={{ x: -40, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+          className="relative md:absolute text-white font-[950] italic tracking-tight text-[15vw] md:text-[11vw] left-0 md:left-12 md:top-[16%] leading-none uppercase text-left"
         >
+          BUILD
+        </motion.h1>
 
-        </motion.p>
+        {/* REAL */}
+        <motion.h1
+          id="title-real"
+          initial={{ x: 40, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+          className="relative md:absolute text-white font-[950] italic tracking-tight text-[15vw] md:text-[11vw] text-right md:right-24 md:top-[30%] leading-none uppercase mt-2 md:mt-0"
+        >
+          REAL
+        </motion.h1>
 
+        {/* STRENGTH */}
+        <motion.h1
+          id="title-strength"
+          initial={{ y: 30, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          className="relative md:absolute text-transparent bg-clip-text bg-gradient-to-r from-[#d4af37] via-neutral-100 to-[#d4af37] font-[950] italic tracking-tight text-[15vw] md:text-[11vw] left-0 md:left-[28%] md:top-[56%] leading-none pb-2 md:pb-4 pr-4 md:pr-8 uppercase mt-2 md:mt-0 text-left"
+        >
+          STRENGTH
+        </motion.h1>
+
+        {/* DESCRIPTION & CTAs (Phone setup shifts this below STRENGTH smoothly) */}
         <motion.div
-          initial={{ opacity: 0, y: 15 }}
+          id="desc-and-ctas"
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.6 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto px-4"
+          transition={{ duration: 0.6, delay: 0.8 }}
+          className="relative md:absolute left-0 md:left-12 md:top-[44%] max-w-full md:max-w-[340px] flex flex-col gap-5 z-20 mt-8 md:mt-0"
         >
-          <button
-            id="btn-cta-trial"
-            onClick={handleGetStartedClick}
-            className="group relative w-full sm:w-auto bg-yellow-500 text-black text-sm md:text-base font-bold px-8 py-3.5 rounded-lg shadow-lg active:scale-[0.98] cursor-pointer text-center whitespace-nowrap transition-all duration-300 overflow-hidden"
+          <p
+            id="desc-paragraph"
+            className="text-[12px] md:text-[13px] leading-relaxed text-neutral-400 font-normal tracking-wider uppercase"
           >
-            <div
-              className="absolute inset-0 opacity-0 group-hover:opacity-[0.15] transition-opacity duration-300 pointer-events-none mix-blend-overlay"
-              style={{
-                backgroundImage:
-                  "url('data:image/svg+xml,%3Csvg viewBox=%220 0 100 100%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22g%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.95%22 numOctaves=%223%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23g)%22/%3E%3C/svg%3E')",
-              }}
-            />
-            <span className="relative z-10">Join Now</span>
-          </button>
-
-          <button
-            id="btn-view-branches"
-            onClick={(e) => e.preventDefault()}
-            className="group relative w-full sm:w-auto bg-transparent border-2 border-yellow-500 text-yellow-500 text-sm md:text-base font-bold px-8 py-3.5 rounded-lg active:scale-[0.98] cursor-pointer text-center whitespace-nowrap transition-all duration-300 overflow-hidden"
-          >
-            <div
-              className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-300 pointer-events-none bg-amber-600 mix-blend-screen"
-              style={{
-                backgroundImage:
-                  "url('data:image/svg+xml,%3Csvg viewBox=%220 0 100 100%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22g%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.95%22 numOctaves=%223%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23g)%22/%3E%3C/svg%3E')",
-              }}
-            />
-            <span className="relative z-10 transition-colors group-hover:text-amber-400">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </p>
+          <div className="flex flex-row gap-3 w-full sm:w-auto">
+            <button
+              id="btn-cta-trial"
+              onClick={handleGetStartedClick}
+              className="flex-1 sm:flex-none bg-[#d4af37] hover:bg-white text-black text-[11px] font-black tracking-widest uppercase rounded-none px-6 py-3 transition-all shadow-xl cursor-pointer text-center whitespace-nowrap"
+            >
+              Join Now
+            </button>
+            <button
+              id="btn-view-branches"
+              onClick={(e) => e.preventDefault()}
+              className="flex-1 sm:flex-none bg-transparent hover:bg-white/5 border-2 border-white text-white text-[11px] font-black tracking-widest uppercase rounded-none px-6 py-3 transition-all cursor-pointer text-center whitespace-nowrap"
+            >
               View Branches
-            </span>
-          </button>
+            </button>
+          </div>
         </motion.div>
+
+        {/* STATS - TOP RIGHT (Desktop fixed position, Phone flows below nicely) */}
+        <motion.div
+          id="stat-top-right"
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6, delay: 0.5 }}
+          className="absolute right-6 md:right-24 top-[4%] md:top-[16%] flex flex-col items-end"
+        >
+          <span className="text-2xl md:text-5xl font-[950] italic tracking-tight text-[#d4af37] leading-none">
+            +3
+          </span>
+          <span className="text-[8px] md:text-[10px] text-neutral-400 tracking-widest uppercase mt-1 text-right font-bold">
+            Active Branches
+          </span>
+        </motion.div>
+
+        {/* BOTTOM STATS CONTAINER (Converted to a clean grid on phone view) */}
+        <div className="grid grid-cols-2 gap-4 border-t border-white/5 md:border-none pt-6 md:pt-0 mt-auto md:mt-0">
+          {/* STAT - BOTTOM LEFT */}
+          <motion.div
+            id="stat-bottom-left"
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 1 }}
+            className="relative md:absolute left-0 md:left-12 md:bottom-16 md:bottom-20 flex flex-col items-start"
+          >
+            <span className="text-2xl md:text-5xl font-[950] italic tracking-tight text-[#d4af37] leading-none">
+              +1.7k
+            </span>
+            <span className="text-[8px] md:text-[10px] text-neutral-400 tracking-widest uppercase mt-1 font-bold text-left">
+              Active Members
+            </span>
+          </motion.div>
+
+          {/* STAT - BOTTOM RIGHT */}
+          <motion.div
+            id="stat-bottom-right"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 1.2 }}
+            className="relative md:absolute right-0 md:right-24 md:bottom-12 md:bottom-16 flex flex-col items-end"
+          >
+            <span className="text-2xl md:text-5xl font-[950] italic tracking-tight text-[#d4af37] leading-none">
+              +505
+            </span>
+            <span className="text-[8px] md:text-[10px] text-neutral-400 tracking-widest uppercase mt-1 text-right font-bold">
+              FB Reviews
+            </span>
+          </motion.div>
+        </div>
       </div>
 
       <div
         id="bottom-overlay"
-        className="pointer-events-none absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-b from-transparent to-black"
+        className="pointer-events-none absolute bottom-0 left-0 right-0 h-32 md:h-48 bg-gradient-to-b from-transparent to-black z-10"
       />
 
       <AnimatePresence>
@@ -172,11 +183,10 @@ export default function Hero({
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            className="absolute bottom-8 left-1/2 -translate-x-1/2 z-30 bg-neutral-900 border border-neutral-800 rounded-lg px-5 py-2 shadow-2xl"
+            className="absolute bottom-6 md:bottom-8 left-1/2 -translate-x-1/2 z-30 bg-neutral-900 border border-neutral-800 rounded-none px-4 md:px-5 py-2 shadow-2xl"
           >
-            <p className="text-xs tracking-wide text-neutral-400 font-medium">
-              navigating to{" "}
-              <span className="text-yellow-500">{activeLink}</span>
+            <p className="text-[8px] md:text-[9px] tracking-widest text-neutral-400 uppercase font-bold whitespace-nowrap">
+              navigating to <span className="text-[#d4af37]">{activeLink}</span>
             </p>
           </motion.div>
         )}
